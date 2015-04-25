@@ -2,7 +2,7 @@
   "name": "mat-shell",
   "license": "BSD-3-Clause",
   "version": "0.8.0",
-  "description": "This component is used to wrap a material application.",
+  "description": "This element is used to wrap a material application.",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
     "Maurizio Stefàno <m.stefano@expandjs.com>",
