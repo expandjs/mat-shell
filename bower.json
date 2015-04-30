@@ -1,8 +1,8 @@
 {
   "name": "mat-shell",
   "license": "BSD-3-Clause",
-  "version": "0.8.4",
-  "description": "This element is used to wrap a material application.",
+  "version": "0.8.5",
+  "description": "A custom element used to wrap a Material Design app",
   "homepage": "http://www.expandjs.com/elements/mat-shell",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
