@@ -39,9 +39,20 @@ This element is used to wrap a material application.
                 right: 0;
                 top: 0;
             }
+
+            :host #matShellWrapper {
+                overflow: hidden;
+            }
+
+            :host #matShellMain {
+                overflow: auto;
+                position: relative;
+            }
         </style>
-        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" fit>
-            <content id="content"></content>
+        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" horizontal layout fit>
+            <content id="leftContent" select="[drawer]:not([right])"></content>
+            <div id="matShellMain" flex><content id="content" select=":not([drawer])"></content></div>
+            <content id="rightContent" select="[drawer][right]"></content>
         </mat-paper>
     </template>
 
