@@ -40,16 +40,13 @@ This element is used to wrap a material application.
                 top: 0;
             }
 
-            :host #matShellWrapper {
-                overflow: hidden;
-            }
-
+            :host #matShellWrapper,
             :host #matShellMain {
-                overflow: auto;
+                height: 100%;
                 position: relative;
             }
         </style>
-        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" horizontal layout fit>
+        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" horizontal layout>
             <content id="leftContent" select="[drawer]:not([right])"></content>
             <div id="matShellMain" flex><content id="content" select=":not([drawer])"></content></div>
             <content id="rightContent" select="[drawer][right]"></content>
