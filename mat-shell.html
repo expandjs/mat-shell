@@ -46,10 +46,10 @@ This element is used to wrap a material application.
                 position: relative;
             }
         </style>
-        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" horizontal layout>
-            <content id="leftContent" select="[drawer]:not([right])"></content>
-            <div id="matShellMain" flex><content id="content" select=":not([drawer])"></content></div>
+        <mat-paper id="matShellWrapper" background="{{background}}" brightness="shell" theme="{{theme}}" horizontal layout reverse>
             <content id="rightContent" select="[drawer][right]"></content>
+            <div id="matShellMain" flex><content id="content" select=":not([drawer])"></content></div>
+            <content id="leftContent" select="[drawer]"></content>
         </mat-paper>
     </template>
 
