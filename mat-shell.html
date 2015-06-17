@@ -1,0 +1,101 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This element is used to wrap a material application.
+
+@element mat-shell
+@description A custom element used to wrap a Material Design app
+@keywords material design, material app, web app, html5, expandjs, web-components
+@group containers
+@homepage http://expandjs.com/elements/mat-shell
+
+@dependency polymer Polymer/polymer
+@dependency expandjs ExpandJS/expandjs
+@dependency iron-flex-layout PolymerElements/iron-flex-layout
+@dependency mat-paper ExpandJS/mat-paper
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../mat-paper/mat-paper.html">
+
+<dom-module id="mat-shell">
+
+    <style>
+        :host {
+            @apply(--layout-fit);
+            display: block;
+            overflow: visible;
+            text-align: left;
+        }
+
+        :host #matShellWrapper {
+            @apply(--layout-horizontal);
+            @apply(--layout-horizontal-reverse);
+            height: 100%;
+            position: relative;
+        }
+
+        :host #matShellMain {
+            @apply(--layout-flex);
+            height: 100%;
+            position: relative;
+        }
+    </style>
+
+    <template>
+        <mat-paper id="matShellWrapper" background="[[background]]" brightness="shell" theme="{{theme}}">
+            <content id="rightContent" select="[drawer][right]"></content>
+            <div id="matShellMain"><content id="content" select=":not([drawer])"></content></div>
+            <content id="leftContent" select="[drawer]"></content>
+        </mat-paper>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-shell',
+
+            /*********************************************************************/
+
+            // PROPERTIES
+            properties: {
+
+                /**
+                 * The paper's background color.
+                 *
+                 * @attribute background
+                 * @type string
+                 */
+                background: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The paper's theme, used to apply the default foreground color.
+                 *
+                 * @attribute theme
+                 * @type "dark" | "light"
+                 * @default "light"
+                 * @notifies
+                 */
+                theme: {
+                    notify: true,
+                    type: String,
+                    value: 'light'
+                }
+            }
+        });
+    </script>
+
+</dom-module>
