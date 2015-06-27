@@ -17,9 +17,9 @@ It can be used in conjunction with mat-drawer.
 @homepage http://expandjs.com/elements/mat-shell
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency expandjs ExpandJS/expandjs#0.9.2
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-paper ExpandJS/mat-paper#0.9.1
+@dependency mat-paper ExpandJS/mat-paper#0.9.2
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -86,14 +86,12 @@ It can be used in conjunction with mat-drawer.
                  * The paper's theme, used to apply the default foreground color.
                  *
                  * @attribute theme
-                 * @type "dark" | "light"
-                 * @default "light"
+                 * @type String
                  * @notifies
                  */
                 theme: {
                     notify: true,
-                    type: String,
-                    value: 'light'
+                    type: String
                 }
             }
         });
