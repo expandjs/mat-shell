@@ -52,7 +52,7 @@ It can be used in conjunction with mat-drawer.
     </style>
 
     <template>
-        <mat-paper id="matShellWrapper" background="[[background]]" brightness="shell" theme="{{theme}}">
+        <mat-paper id="matShellWrapper" background="[[background]]" brightness="shell">
             <content id="rightContent" select="[drawer][right]"></content>
             <div id="matShellMain"><content id="content" select=":not([drawer])"></content></div>
             <content id="leftContent" select="[drawer]"></content>
@@ -80,18 +80,6 @@ It can be used in conjunction with mat-drawer.
                     reflectToAttribute: true,
                     type: String,
                     value: null
-                },
-
-                /**
-                 * The paper's theme, used to apply the default foreground color.
-                 *
-                 * @attribute theme
-                 * @type String
-                 * @notifies
-                 */
-                theme: {
-                    notify: true,
-                    type: String
                 }
             }
         });
