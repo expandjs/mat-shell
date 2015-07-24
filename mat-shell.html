@@ -7,9 +7,22 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to wrap a material application.
+An element used to wrap a [Material Design application](http://www.google.com/design/spec/layout/structure.html#structure-ui-regions), giving it a base scaffold.
 
-It can be used in conjunction with mat-drawer.
+```html
+<mat-shell>
+
+    <mat-drawer>...</mat-drawer>
+
+    <mat-header-panel>
+        <mat-header>...</mat-header>
+        <mat-content>...</mat-content>
+    </mat-header-panel>
+
+    <mat-drawer right>...</mat-drawer>
+
+</mat-shell>
+```
 
 @element mat-shell
 @description A custom element used to wrap a Material Design app
@@ -18,9 +31,9 @@ It can be used in conjunction with mat-drawer.
 @homepage http://expandjs.com/elements/mat-shell
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-paper ExpandJS/mat-paper#0.9.4
+@dependency mat-paper ExpandJS/mat-paper#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -81,7 +94,56 @@ It can be used in conjunction with mat-drawer.
                     reflectToAttribute: true,
                     type: String,
                     value: null
+                },
+
+                /**
+                 * The left drawer.
+                 *
+                 * @attribute drawer
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                drawer: {
+                    notify: true,
+                    readOnly: true,
+                    value: null
+                },
+
+                /**
+                 * The right drawer.
+                 *
+                 * @attribute right-drawer
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                rightDrawer: {
+                    notify: true,
+                    readOnly: true,
+                    value: null
                 }
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            attached: function () {
+                this.mutated();
+            },
+
+            // LISTENER
+            mutated: function () {
+
+                // Vars
+                var self = this;
+
+                // Setting
+                self._setDrawer(XP.getDistributedElement(Polymer.dom(self.$.leftContent), '[drawer]'));
+                self._setRightDrawer(XP.getDistributedElement(Polymer.dom(self.$.rightContent), '[drawer]'));
+
+                // Observing
+                XP.onMutation(self, self.mutated.bind(self));
             }
         });
     </script>
