@@ -32,9 +32,9 @@ An element used to wrap a [Material Design application](http://www.google.com/de
 @repository https://github.com/ExpandJS/mat-shell
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency expandjs ExpandJS/expandjs#0.9.6
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-paper ExpandJS/mat-paper#0.9.5
+@dependency mat-paper ExpandJS/mat-paper#0.9.6
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -140,8 +140,8 @@ An element used to wrap a [Material Design application](http://www.google.com/de
                 var self = this;
 
                 // Setting
-                self._setDrawer(XP.getDistributedElement(Polymer.dom(self.$.leftContent), '[drawer]'));
-                self._setRightDrawer(XP.getDistributedElement(Polymer.dom(self.$.rightContent), '[drawer]'));
+                self._setDrawer(XP.getDistributedElement(Polymer.dom(self.$.leftContent), '[drawer=""]'));
+                self._setRightDrawer(XP.getDistributedElement(Polymer.dom(self.$.rightContent), '[drawer=""]'));
 
                 // Observing
                 XP.onMutation(self, self.mutated.bind(self));
