@@ -2,6 +2,7 @@
   "name": "mat-shell",
   "license": "BSD-3-Clause",
   "version": "0.9.6",
+  "main": "mat-shell.html",
   "description": "A custom element used to wrap a Material Design app",
   "homepage": "http://expandjs.com/elements/mat-shell",
   "authors": [
@@ -16,9 +17,6 @@
     "html5",
     "expandjs",
     "web-components"
-  ],
-  "main": [
-    "mat-shell.html"
   ],
   "ignore": [
     "**/.*"
