@@ -1,3 +1,3 @@
 # mat-shell
 
-See the [`documentation page`](http://expandjs.com/elements/mat-shell) for more information.
+This repository **is deprecated**. Use [`mat-drawer-panel`](https://github.com/expandjs/mat-drawer-panel) instead.
