@@ -7,63 +7,48 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to wrap a [Material Design application](http://www.google.com/design/spec/layout/structure.html#structure-ui-regions), giving it a base scaffold.
-
-```html
-<mat-shell>
-
-    <mat-drawer>...</mat-drawer>
-
-    <mat-header-panel>
-        <mat-header>...</mat-header>
-        <mat-content>...</mat-content>
-    </mat-header-panel>
-
-    <mat-drawer right>...</mat-drawer>
-
-</mat-shell>
-```
+A custom element used to wrap a [Material Design application](https://www.google.com/design/spec/layout/structure.html#structure-ui-regions).
 
 @element mat-shell
-@description A custom element used to wrap a Material Design app
-@keywords material design, material app, web app, html5, expandjs, web-components
+@description A custom element wrap a Material Design application
+@keywords material design, expandjs, web app, custom elements, web-components
 @group containers
+
 @homepage http://expandjs.com/elements/mat-shell
 @repository https://github.com/ExpandJS/mat-shell
 
-@dependency polymer Polymer/polymer#^1.1.0
-@dependency expandjs ExpandJS/expandjs#0.9.9
-@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-paper ExpandJS/mat-paper#0.9.9
+@behavior mat-paper-behavior /bower_components/mat-paper/mat-paper-behavior.html
+@behavior xp-shell-behavior /bower_components/xp-shell-behavior/xp-shell-behavior.html
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.10.0
+@dependency mat-paper ExpandJS/mat-paper#0.10.0
+@dependency mat-typography ExpandJS/mat-typography#0.10.0
+@dependency xp-shell-behavior ExpandJS/xp-shell-behavior#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../mat-paper/mat-paper.html">
+<link rel="import" href="../mat-paper/mat-paper-behavior.html">
+<link rel="import" href="../mat-paper/mat-paper-styles.html">
+<link rel="import" href="../mat-typography/mat-typography.html">
+<link rel="import" href="../xp-shell-behavior/xp-shell-behavior.html">
+<link rel="import" href="../xp-shell-behavior/xp-shell-styles.html">
 
 <dom-module id="mat-shell">
 
-    <template>
+    <template strip-whitespace>
+
+        <style include="mat-paper-styles"></style>
+        <style include="xp-shell-styles"></style>
 
         <style>
             :host {
-                @apply(--layout-fit);
-                display: block;
-                overflow: visible;
-                text-align: left;
-            }
-
-            :host #matShellWrapper {
-                height: 100%;
+                font-family: RobotoDraft, Roboto, sans-serif;
             }
         </style>
 
-        <mat-paper id="matShellWrapper" background="[[background]]" brightness="shell">
-            <content id="rightContent" select='[drawer=""][right=""]'></content>
-            <content id="content" select=':not([drawer=""])'></content>
-            <content id="leftContent" select='[drawer=""]'></content>
-        </mat-paper>
+        <content></content>
 
     </template>
 
@@ -73,71 +58,29 @@ An element used to wrap a [Material Design application](http://www.google.com/de
             // ELEMENT
             is: 'mat-shell',
 
+            // BEHAVIORS
+            behaviors: [
+                Polymer.MatPaperBehavior,
+                Polymer.XPShellBehavior
+            ],
+
             /*********************************************************************/
 
             // PROPERTIES
             properties: {
 
                 /**
-                 * The paper's background color.
+                 * The shell's brightness.
                  *
-                 * @attribute background
+                 * @attribute brightness
                  * @type string
+                 * @default "backdrop"
                  */
-                background: {
+                brightness: {
                     reflectToAttribute: true,
                     type: String,
-                    value: null
-                },
-
-                /**
-                 * The left drawer.
-                 *
-                 * @attribute drawer
-                 * @type Element
-                 * @notifies
-                 * @readonly
-                 */
-                drawer: {
-                    notify: true,
-                    readOnly: true,
-                    value: null
-                },
-
-                /**
-                 * The right drawer.
-                 *
-                 * @attribute right-drawer
-                 * @type Element
-                 * @notifies
-                 * @readonly
-                 */
-                rightDrawer: {
-                    notify: true,
-                    readOnly: true,
-                    value: null
+                    value: 'backdrop'
                 }
-            },
-
-            /*********************************************************************/
-
-            // LISTENER
-            attached: function () {
-                this.mutated();
-            },
-
-            // LISTENER
-            mutated: function () {
-
-                // Vars
-                var self = this;
-
-                // Setting
-                self._setDrawer(XP.getDistributedElement(Polymer.dom(self.$.leftContent), '[drawer=""]'));
-                self._setRightDrawer(XP.getDistributedElement(Polymer.dom(self.$.rightContent), '[drawer=""]'));
-
-                // Observing
-                XP.onMutation(self, self.mutated.bind(self));
             }
         });
     </script>
